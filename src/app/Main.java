@@ -50,9 +50,7 @@ public class Main {
 		contatosComerciais.add(cc2);
 		
 		System.out.println(contatosComerciais);
-		
-		
-		
+		System.out.println("---------------------");
 		
 		
 	}

@@ -1,9 +1,27 @@
 package repositorio;
 
 import dominio.CRUDInterface;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
-public class Repositorio<T> implements CRUDInterface<T>{
-
+public abstract class Repositorio<T> implements CRUDInterface<T>{
+	protected static EntityManagerFactory emf;
+	
+	protected EntityManager manager;
+	
+	static {
+        try {
+            emf = Persistence.createEntityManagerFactory("agenda-pu");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
+	public Repositorio() {
+        this.manager = emf.createEntityManager(); 
+    }
+	
 	@Override
 	public boolean criar(T objeto) {
 		return false;

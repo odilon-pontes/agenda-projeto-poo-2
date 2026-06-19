@@ -17,7 +17,6 @@ public class Cidade {
 	}
 
 
-
 	public int getId() {
 		return id;
 	}
