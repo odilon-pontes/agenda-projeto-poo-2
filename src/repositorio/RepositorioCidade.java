@@ -1,6 +1,6 @@
-package src.repositorio;
+package repositorio;
 
-import src.dominio.Cidade;
+import dominio.Cidade;
 
 public class RepositorioCidade extends Repositorio<Cidade>{
 

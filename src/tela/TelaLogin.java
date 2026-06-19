@@ -1,4 +1,4 @@
-package src.tela;
+package tela;
 
 public class TelaLogin {
 

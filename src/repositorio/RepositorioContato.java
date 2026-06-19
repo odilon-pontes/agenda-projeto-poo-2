@@ -1,6 +1,6 @@
-package src.repositorio;
+package repositorio;
 
-import src.dominio.Contato;
+import dominio.Contato;
 
 public class RepositorioContato extends Repositorio<Contato> {
 

@@ -1,4 +1,4 @@
-package src.dominio;
+package dominio;
 
 public interface CRUDInterface<T> {
     boolean criar(T objeto);

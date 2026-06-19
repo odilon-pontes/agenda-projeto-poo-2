@@ -1,8 +1,8 @@
-package src.servico;
+package servico;
 
 import java.util.List;
 
-import src.dominio.ContatoComercial;
+import dominio.ContatoComercial;
 
 public class ServicoContatoComercial extends ServicoContato {
 	

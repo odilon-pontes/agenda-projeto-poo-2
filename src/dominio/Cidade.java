@@ -1,13 +1,22 @@
-package src.dominio;
+package dominio;
 
 public class Cidade {
-	private int id;
+	private static int proximoId = 1;
+	private int id = 1;
 	private String nome;
 	
-	public Cidade(int id, String nome) {
-		this.id = id;
+	public Cidade(String nome) {
 		this.nome = nome;
+		this.id = proximoId++;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Cidade [id="+ id + ", nome=" + nome + "]";
+	}
+
+
 
 	public int getId() {
 		return id;

@@ -1,4 +1,4 @@
-package src.servico;
+package servico;
 
 public abstract class ServicoContato extends Servico {
 	public static void adicionarTelefoneContato(int numero, int id) {

@@ -1,4 +1,4 @@
-package src.servico;
+package servico;
 
 public abstract class Servico {
 

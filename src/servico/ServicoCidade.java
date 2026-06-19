@@ -1,6 +1,6 @@
-package src.servico;
+package servico;
 
-import src.dominio.Cidade;
+import dominio.Cidade;
 
 public class ServicoCidade extends Servico{
 	

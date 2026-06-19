@@ -1,6 +1,6 @@
-package src.repositorio;
+package repositorio;
 
-import src.dominio.CRUDInterface;
+import dominio.CRUDInterface;
 
 public class Repositorio<T> implements CRUDInterface<T>{
 

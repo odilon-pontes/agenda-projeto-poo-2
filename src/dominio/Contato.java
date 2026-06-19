@@ -1,17 +1,26 @@
-package src.dominio;
+package dominio;
 
 import java.util.List;
 
 public abstract class Contato {
-	private int id;
-	private String nome;
-	private List<String> telefones;
+	private static int proximoId = 1;
+	protected int id;
+	protected String nome;
+	protected List<String> telefones;
 	
-	public Contato(int id, String nome, List<String> telefones) {
-		this.id = id;
+	
+	public Contato( String nome, List<String> telefones) {
 		this.nome = nome;
 		this.telefones = telefones;
+		this.id = proximoId++;
 	}
+
+	
+	@Override
+	public String toString() {
+		return "Contato [id=" + id + ", nome=" + nome + ", telefones=" + telefones + "]";
+	}
+
 
 	public int getId() {
 		return id;
