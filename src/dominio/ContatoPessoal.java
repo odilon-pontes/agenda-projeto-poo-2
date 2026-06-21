@@ -1,28 +1,29 @@
 package dominio;
 
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 
+@Entity
+@DiscriminatorValue("PESSOAL")
 public class ContatoPessoal extends Contato {
-	private int grauProximidade;
 
-	public ContatoPessoal(String nome, List<String> telefones, int grauProximidade) {
-		super(nome, telefones);
-		this.grauProximidade = grauProximidade;
-	}
+    @Column(name = "grau_proximidade")
+    private int grauProximidade;
 
-	public int getGrauProximidade() {
-		return grauProximidade;
-	}
+    public ContatoPessoal() {}
 
-	public void setGrauProximidade(int grauProximidade) {
-		this.grauProximidade = grauProximidade;
-	}
+    public ContatoPessoal(String nome, Cidade cidade, int grauProximidade) {
+        super(nome, cidade);
+        this.grauProximidade = grauProximidade;
+    }
 
-	@Override
-	public String toString() {
-		return "Contato [id=" + id + ", nome=" + nome + ", telefones=" + telefones + ", grauProximidade=" + grauProximidade + "]";
-	}
-	
-	
+    public int getGrauProximidade() { return grauProximidade; }
+    public void setGrauProximidade(int grauProximidade) { this.grauProximidade = grauProximidade; }
 
+    @Override
+    public String toString() {
+        return "ContatoPessoal [id=" + id + ", nome=" + nome + ", cidade=" + cidade
+                + ", telefones=" + telefones + ", grauProximidade=" + grauProximidade + "]";
+    }
 }
