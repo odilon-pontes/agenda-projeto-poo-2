@@ -1,13 +1,11 @@
 package dominio;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "contato_comercial")
-@PrimaryKeyJoinColumn(name = "id_contato")
+@DiscriminatorValue("COMERCIAL")
 public class ContatoComercial extends Contato {
 
     @Column(nullable = false)

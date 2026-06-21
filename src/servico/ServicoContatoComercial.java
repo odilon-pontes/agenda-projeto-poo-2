@@ -9,7 +9,6 @@ import repositorio.RepositorioContatoComercial;
 
 public class ServicoContatoComercial extends ServicoContato {
 
-    // SCRUM-6 — localizarContatoComercial(id)
     public static ContatoComercial localizarContatoComercial(int id) {
         RepositorioContatoComercial repo = new RepositorioContatoComercial();
         ContatoComercial contato = repo.localizarComercialPorId(id);
@@ -18,7 +17,6 @@ public class ServicoContatoComercial extends ServicoContato {
         return contato;
     }
 
-    // SCRUM-7 — localizarContatoComercial(nome)
     public static ContatoComercial localizarContatoComercial(String nome) {
         if (nome == null || nome.isBlank())
             throw new RuntimeException("Nome não pode ser vazio.");
@@ -29,7 +27,6 @@ public class ServicoContatoComercial extends ServicoContato {
         return contato;
     }
 
-    // SCRUM-8 — criarContatoComercial(nome, empresa, idcidade)
     public static void criarContatoComercial(String nome, String empresa, int idcidade) {
         if (nome == null || nome.isBlank())
             throw new RuntimeException("Nome é obrigatório.");
@@ -38,14 +35,42 @@ public class ServicoContatoComercial extends ServicoContato {
 
         RepositorioContatoComercial repoContato = new RepositorioContatoComercial();
 
-        // Regra 1: nome único
         if (repoContato.localizarComercialPorNome(nome) != null)
             throw new RuntimeException("Já existe um contato com o nome: " + nome.toUpperCase());
 
-        // Regra 3: cidade obrigatória
         RepositorioCidade repoCidade = new RepositorioCidade();
         Cidade cidade = repoCidade.localizar(idcidade);
         if (cidade == null)
             throw new RuntimeException("Cidade não encontrada para o id: " + idcidade);
 
-        ContatoComercial contato = new
+        ContatoComercial contato = new ContatoComercial(nome, cidade, empresa);
+        repoContato.criarComercial(contato);
+    }
+
+    public static void alterarContatoComercial(String nome, String empresa, int idcidade) {
+        if (nome == null || nome.isBlank())
+            throw new RuntimeException("Nome é obrigatório.");
+        if (empresa == null || empresa.isBlank())
+            throw new RuntimeException("Empresa é obrigatória.");
+
+        RepositorioContatoComercial repoContato = new RepositorioContatoComercial();
+
+        ContatoComercial contato = repoContato.localizarComercialPorNome(nome);
+        if (contato == null)
+            throw new RuntimeException("Contato comercial não encontrado: " + nome.toUpperCase());
+
+        RepositorioCidade repoCidade = new RepositorioCidade();
+        Cidade cidade = repoCidade.localizar(idcidade);
+        if (cidade == null)
+            throw new RuntimeException("Cidade não encontrada para o id: " + idcidade);
+
+        contato.setEmpresa(empresa);
+        contato.setCidade(cidade);
+        repoContato.atualizarComercial(contato);
+    }
+
+    public static List<ContatoComercial> listarContatosEmpresa() {
+        RepositorioContatoComercial repo = new RepositorioContatoComercial();
+        return repo.listarTodosComerciais();
+    }
+}

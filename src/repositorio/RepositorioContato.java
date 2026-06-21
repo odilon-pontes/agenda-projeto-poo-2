@@ -33,16 +33,26 @@ public class RepositorioContato extends Repositorio<Contato> {
         if (contato.getTelefones().contains(numero)) {
             throw new RuntimeException("Telefone já cadastrado para este contato.");
         }
-        manager.getTransaction().begin();
-        contato.getTelefones().add(numero);
-        manager.getTransaction().commit();
+        try {
+            manager.getTransaction().begin();
+            contato.getTelefones().add(numero);
+            manager.getTransaction().commit();
+        } catch (Exception e) {
+            manager.getTransaction().rollback();
+            throw new RuntimeException("Erro ao adicionar telefone: " + e.getMessage());
+        }
     }
 
     public void deletar(int id) {
         Contato contato = localizar(id);
         if (contato == null) throw new RuntimeException("Contato não encontrado.");
-        manager.getTransaction().begin();
-        manager.remove(contato);
-        manager.getTransaction().commit();
+        try {
+            manager.getTransaction().begin();
+            manager.remove(contato);
+            manager.getTransaction().commit();
+        } catch (Exception e) {
+            manager.getTransaction().rollback();
+            throw new RuntimeException("Erro ao apagar contato: " + e.getMessage());
+        }
     }
 }
