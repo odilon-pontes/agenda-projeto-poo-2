@@ -1,26 +1,29 @@
 package dominio;
 
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 
-public class ContatoComercial extends Contato{
-	private String empresa;
+@Entity
+@DiscriminatorValue("COMERCIAL")
+public class ContatoComercial extends Contato {
 
-	public ContatoComercial(String nome, List<String> telefones, String empresa) {
-		super(nome, telefones);
-		this.empresa = empresa;
-	}
+    @Column(nullable = false)
+    private String empresa;
 
-	public String getEmpresa() {
-		return empresa;
-	}
+    public ContatoComercial() {}
 
-	public void setEmpresa(String empresa) {
-		this.empresa = empresa;
-	}
+    public ContatoComercial(String nome, Cidade cidade, String empresa) {
+        super(nome, cidade);
+        this.empresa = empresa;
+    }
 
-	@Override
-	public String toString() {
-		return "Contato [id=" + id + ", nome=" + nome + ", telefones=" + telefones + ", empresa=" + empresa +"]";
-	}
-	
+    public String getEmpresa() { return empresa; }
+    public void setEmpresa(String empresa) { this.empresa = empresa; }
+
+    @Override
+    public String toString() {
+        return "ContatoComercial [id=" + id + ", nome=" + nome + ", empresa=" + empresa
+                + ", cidade=" + cidade + ", telefones=" + telefones + "]";
+    }
 }
