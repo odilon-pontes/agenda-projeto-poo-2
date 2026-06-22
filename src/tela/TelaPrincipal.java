@@ -1,6 +1,5 @@
 package tela;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -20,7 +19,7 @@ public class TelaPrincipal extends JFrame {
         setSize(520, 360);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(new Color(245, 245, 245));
-        getContentPane().setLayout(new BorderLayout());
+        getContentPane().setLayout(null);
 
         montarMenu();
         montarConteudo();
@@ -58,11 +57,13 @@ public class TelaPrincipal extends JFrame {
     private void montarConteudo() {
         JLabel titulo = new JLabel("Agenda de Contatos", SwingConstants.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 22));
-        getContentPane().add(titulo, BorderLayout.CENTER);
+        titulo.setBounds(20, 110, 460, 40);
+        getContentPane().add(titulo);
 
         JLabel subtitulo = new JLabel(
             "Use o menu \"Cadastros\" para gerenciar cidades e contatos.", SwingConstants.CENTER);
         subtitulo.setFont(new Font("Arial", Font.PLAIN, 13));
-        getContentPane().add(subtitulo, BorderLayout.SOUTH);
+        subtitulo.setBounds(20, 160, 460, 25);
+        getContentPane().add(subtitulo);
     }
 }

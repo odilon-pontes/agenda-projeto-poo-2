@@ -22,7 +22,7 @@ public class Cidade {
 	}
 
 	public Cidade(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase();
 	}
 
 	public int getId() {
@@ -38,7 +38,7 @@ public class Cidade {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+    	this.nome = nome.toUpperCase();
 	}
 
 	@Override

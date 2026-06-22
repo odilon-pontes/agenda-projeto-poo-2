@@ -76,11 +76,11 @@ public class TelaContatoPessoal extends JFrame {
         campoNome.setBounds(80, 260, 200, 25);
         getContentPane().add(campoNome);
 
-        JLabel lblGrau = new JLabel("Grau de Proximidade:");
-        lblGrau.setBounds(300, 260, 150, 20);
+        JLabel lblGrau = new JLabel("Grau de Proximidade (1-Baixo, 2-Médio, 3-Alto):");
+        lblGrau.setBounds(300, 260, 260, 20);
         getContentPane().add(lblGrau);
-        comboGrauProximidade = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5});
-        comboGrauProximidade.setBounds(455, 260, 60, 25);
+        comboGrauProximidade = new JComboBox<>(new Integer[]{1, 2, 3});
+        comboGrauProximidade.setBounds(565, 260, 60, 25);
         getContentPane().add(comboGrauProximidade);
 
         JLabel lblCidade = new JLabel("Cidade:");
