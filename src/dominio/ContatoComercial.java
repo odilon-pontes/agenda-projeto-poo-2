@@ -8,7 +8,7 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue("COMERCIAL")
 public class ContatoComercial extends Contato {
 
-    @Column(nullable = false)
+    @Column
     private String empresa;
 
     public ContatoComercial() {}

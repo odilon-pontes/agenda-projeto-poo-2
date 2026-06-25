@@ -42,17 +42,4 @@ public class RepositorioContato extends Repositorio<Contato> {
             throw new RuntimeException("Erro ao adicionar telefone: " + e.getMessage());
         }
     }
-
-    public void deletar(int id) {
-        Contato contato = localizar(id);
-        if (contato == null) throw new RuntimeException("Contato não encontrado.");
-        try {
-            manager.getTransaction().begin();
-            manager.remove(contato);
-            manager.getTransaction().commit();
-        } catch (Exception e) {
-            manager.getTransaction().rollback();
-            throw new RuntimeException("Erro ao apagar contato: " + e.getMessage());
-        }
-    }
 }

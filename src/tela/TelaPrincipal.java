@@ -32,10 +32,6 @@ public class TelaPrincipal extends JFrame {
         JMenuBar menuBar = new JMenuBar();
         JMenu menuCadastros = new JMenu("Cadastros");
 
-        JMenuItem itemCidades = new JMenuItem("Cidades");
-        itemCidades.addActionListener(e -> new TelaCidade());
-        menuCadastros.add(itemCidades);
-
         JMenuItem itemContatoPessoal = new JMenuItem("Contatos Pessoais");
         itemContatoPessoal.addActionListener(e -> new TelaContatoPessoal());
         menuCadastros.add(itemContatoPessoal);
@@ -61,7 +57,7 @@ public class TelaPrincipal extends JFrame {
         getContentPane().add(titulo);
 
         JLabel subtitulo = new JLabel(
-            "Use o menu \"Cadastros\" para gerenciar cidades e contatos.", SwingConstants.CENTER);
+            "Use o menu \"Cadastros\" para gerenciar contatos.", SwingConstants.CENTER);
         subtitulo.setFont(new Font("Arial", Font.PLAIN, 13));
         subtitulo.setBounds(20, 160, 460, 25);
         getContentPane().add(subtitulo);
