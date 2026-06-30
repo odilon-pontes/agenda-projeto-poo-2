@@ -2,6 +2,8 @@ package tela;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,11 +35,11 @@ public class TelaPrincipal extends JFrame {
         JMenu menuCadastros = new JMenu("Cadastros");
 
         JMenuItem itemContatoPessoal = new JMenuItem("Contatos Pessoais");
-        itemContatoPessoal.addActionListener(e -> new TelaContatoPessoal());
+        itemContatoPessoal.addActionListener(e -> abrirTelaFilha(new TelaContatoPessoal()));
         menuCadastros.add(itemContatoPessoal);
 
         JMenuItem itemContatoComercial = new JMenuItem("Contatos Comerciais");
-        itemContatoComercial.addActionListener(e -> new TelaContatoComercial());
+        itemContatoComercial.addActionListener(e -> abrirTelaFilha(new TelaContatoComercial()));
         menuCadastros.add(itemContatoComercial);
 
         menuCadastros.addSeparator();
@@ -48,6 +50,16 @@ public class TelaPrincipal extends JFrame {
 
         menuBar.add(menuCadastros);
         setJMenuBar(menuBar);
+    }
+
+    private void abrirTelaFilha(JFrame telaFilha) {
+        setVisible(false);
+        telaFilha.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                setVisible(true);
+            }
+        });
     }
 
     private void montarConteudo() {
