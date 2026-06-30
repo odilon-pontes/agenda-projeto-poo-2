@@ -1,6 +1,6 @@
 package servico;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Pattern;
+import java.util.regex.Pattern;
 
 import repositorio.RepositorioContato;
 
