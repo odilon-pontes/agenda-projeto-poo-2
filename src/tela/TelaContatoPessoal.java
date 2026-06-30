@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import dominio.Cidade;
 import dominio.ContatoPessoal;
 import repositorio.RepositorioCidade;
+import servico.ServicoCidade;
 import servico.ServicoContatoPessoal;
 
 public class TelaContatoPessoal extends JFrame {
@@ -36,7 +37,7 @@ public class TelaContatoPessoal extends JFrame {
 
     public TelaContatoPessoal() {
         setTitle("Contatos Pessoais");
-        setSize(820, 560);
+        setSize(870, 560);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().setBackground(new Color(245, 245, 245));
@@ -66,7 +67,7 @@ public class TelaContatoPessoal extends JFrame {
             if (!e.getValueIsAdjusting()) preencherFormulario();
         });
         JScrollPane scroll = new JScrollPane(tabela);
-        scroll.setBounds(20, 50, 770, 190);
+        scroll.setBounds(20, 50, 820, 190);
         getContentPane().add(scroll);
 
         JLabel lblNome = new JLabel("Nome:");
@@ -77,31 +78,48 @@ public class TelaContatoPessoal extends JFrame {
         getContentPane().add(campoNome);
 
         JLabel lblGrau = new JLabel("Grau de Proximidade (1-Baixo, 2-Médio, 3-Alto):");
-        lblGrau.setBounds(300, 260, 260, 20);
+        lblGrau.setBounds(300, 260, 290, 20);
         getContentPane().add(lblGrau);
         comboGrauProximidade = new JComboBox<>(new Integer[]{1, 2, 3});
-        comboGrauProximidade.setBounds(565, 260, 60, 25);
+        comboGrauProximidade.setBounds(595, 260, 60, 25);
         getContentPane().add(comboGrauProximidade);
 
         JLabel lblCidade = new JLabel("Cidade:");
         lblCidade.setBounds(20, 300, 60, 20);
         getContentPane().add(lblCidade);
         comboCidade = new JComboBox<>();
-        comboCidade.setBounds(80, 300, 200, 25);
+        comboCidade.setBounds(80, 300, 140, 25);
         getContentPane().add(comboCidade);
 
+        JButton btnNovaCidade = new JButton("+ Cidade");
+        btnNovaCidade.setBounds(225, 300, 90, 25);
+        btnNovaCidade.addActionListener(e -> {
+            String nome = JOptionPane.showInputDialog(this, "Nome da cidade:");
+            if (nome != null && !nome.isBlank()) {
+                try {
+                    ServicoCidade.criarCidade(nome);
+                    carregarCidades();
+                    JOptionPane.showMessageDialog(this, "Cidade criada!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        getContentPane().add(btnNovaCidade);
+
         JLabel lblTelefone = new JLabel("Telefone:");
-        lblTelefone.setBounds(300, 300, 70, 20);
+        lblTelefone.setBounds(330, 300, 70, 20);
         getContentPane().add(lblTelefone);
         campoTelefone = new JTextField();
-        campoTelefone.setBounds(375, 300, 160, 25);
+        campoTelefone.setBounds(405, 300, 160, 25);
         getContentPane().add(campoTelefone);
 
         JButton btnAddTel = new JButton("+ Tel.");
-        btnAddTel.setBounds(545, 300, 80, 25);
+        btnAddTel.setBounds(575, 300, 80, 25);
         btnAddTel.addActionListener(e -> adicionarTelefone());
         getContentPane().add(btnAddTel);
 
+        // Botões principais
         JButton btnCriar = new JButton("Criar");
         btnCriar.setBounds(20, 350, 110, 30);
         btnCriar.setBackground(new Color(70, 130, 180));
