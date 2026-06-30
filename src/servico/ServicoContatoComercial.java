@@ -33,6 +33,13 @@ public class ServicoContatoComercial extends ServicoContato {
         if (empresa == null || empresa.isBlank())
             throw new RuntimeException("Empresa é obrigatória.");
 
+        nome = nome.trim();
+        empresa = empresa.trim();
+        if (nome.length() > 50)
+            throw new RuntimeException("Nome deve ter no máximo 50 caracteres.");
+        if (empresa.length() > 100)
+            throw new RuntimeException("Empresa deve ter no máximo 100 caracteres.");
+
         RepositorioContatoComercial repoContato = new RepositorioContatoComercial();
 
         if (repoContato.localizarComercialPorNome(nome) != null)

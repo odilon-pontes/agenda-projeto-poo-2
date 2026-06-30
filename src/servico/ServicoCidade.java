@@ -26,6 +26,11 @@ public class ServicoCidade extends Servico {
     public static void criarCidade(String nome) {
         if (nome == null || nome.isBlank())
             throw new RuntimeException("Nome é obrigatório.");
+
+        nome = nome.trim();
+        if (nome.length() > 50)
+            throw new RuntimeException("Nome da cidade deve ter no máximo 50 caracteres.");
+
         RepositorioCidade repo = new RepositorioCidade();
         if (repo.localizarPorNome(nome) != null)
             throw new RuntimeException("Já existe uma cidade com o nome: " + nome.toUpperCase());

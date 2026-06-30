@@ -28,8 +28,12 @@ public class ServicoContatoPessoal extends ServicoContato {
     }
 
     public static void criarContatoPessoal(String nome, int grauProximidade, int idcidade) {
-        if (nome == null || nome.isBlank())
+    	if (nome == null || nome.isBlank())
             throw new RuntimeException("Nome é obrigatório.");
+
+        nome = nome.trim();
+        if (nome.length() > 50)
+            throw new RuntimeException("Nome deve ter no máximo 50 caracteres.");
 
         RepositorioContatoPessoal repo = new RepositorioContatoPessoal();
 

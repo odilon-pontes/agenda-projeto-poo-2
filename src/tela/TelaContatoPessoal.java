@@ -119,7 +119,6 @@ public class TelaContatoPessoal extends JFrame {
         btnAddTel.addActionListener(e -> adicionarTelefone());
         getContentPane().add(btnAddTel);
 
-        // Botões principais
         JButton btnCriar = new JButton("Criar");
         btnCriar.setBounds(20, 350, 110, 30);
         btnCriar.setBackground(new Color(70, 130, 180));
